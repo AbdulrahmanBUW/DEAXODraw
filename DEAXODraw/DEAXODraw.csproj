@@ -31,33 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPIUI.dll</HintPath>
-    </Reference>
+    <!-- System References -->
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
-    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
-    <Reference Include="System.Windows.Input.Manipulations" />
-    <Reference Include="System.Windows.Presentation" />
-    <Reference Include="System.Workflow.Activities" />
-    <Reference Include="System.Workflow.ComponentModel" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <!-- WPF References for BitmapImage -->
+    <Reference Include="PresentationCore" />
     <Reference Include="WindowsBase" />
+    <!-- Revit API References -->
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2023\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
@@ -70,23 +62,38 @@
     <Compile Include="Forms\CategorySelectionForm.Designer.cs">
       <DependentUpon>CategorySelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewTemplateSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewTemplateSelectionForm.Designer.cs">
+      <DependentUpon>ViewTemplateSelectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewTemplateSelectionForm.Designer.cs" />
-    <Compile Include="Forms\ViewTemplateSelectionForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\DEAXOSelectionFilter.cs" />
     <Compile Include="Utilities\ElementProperties.cs" />
     <Compile Include="Utilities\SectionGenerator.cs" />
     <Compile Include="Utilities\VectorUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AutoElevation_32.png" />
-    <Content Include="Resources\AutoSection_32.png" />
-    <Content Include="Resources\DEAXO_Logo.png" />
-    <Content Include="Resources\MakeParallel_32.png" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AutoElevation_32.png" />
+    <EmbeddedResource Include="Resources\AutoSection_32.png" />
+    <EmbeddedResource Include="Resources\MakeParallel_32.png" />
+    <EmbeddedResource Include="Resources\DEAXO_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DEAXODraw.addin" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

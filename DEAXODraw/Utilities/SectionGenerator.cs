@@ -94,17 +94,22 @@ namespace DEAXODraw.Utilities
             XYZ rightDirection = upDirection.CrossProduct(viewDirection).Normalize();
 
             // Create transform for the section view
-            Transform transform = Transform.CreateLookAt(_origin, _origin + viewDirection, upDirection);
+            Transform transform = Transform.Identity;
+            transform.Origin = _origin;
+            transform.BasisX = rightDirection;
+            transform.BasisY = upDirection;
+            transform.BasisZ = viewDirection;
 
             // Create bounding box for the section
             BoundingBoxXYZ sectionBox = CreateSectionBoundingBox(rightDirection, upDirection, viewDirection);
+            sectionBox.Transform = transform;
 
             // Get section view type
             ViewFamilyType sectionViewType = GetSectionViewType();
             if (sectionViewType == null) return null;
 
             // Create the section view
-            ViewSection elevationView = ViewSection.CreateSection(_doc, sectionViewType.Id, sectionBox, transform);
+            ViewSection elevationView = ViewSection.CreateSection(_doc, sectionViewType.Id, sectionBox);
 
             // Set view name
             try
@@ -127,17 +132,22 @@ namespace DEAXODraw.Utilities
             XYZ upDirection = XYZ.BasisZ;
 
             // Create transform for the section view
-            Transform transform = Transform.CreateLookAt(_origin, _origin + viewDirection, upDirection);
+            Transform transform = Transform.Identity;
+            transform.Origin = _origin;
+            transform.BasisX = rightDirection;
+            transform.BasisY = upDirection;
+            transform.BasisZ = viewDirection;
 
             // Create bounding box for the section
             BoundingBoxXYZ sectionBox = CreateSectionBoundingBox(rightDirection, upDirection, viewDirection);
+            sectionBox.Transform = transform;
 
             // Get section view type
             ViewFamilyType sectionViewType = GetSectionViewType();
             if (sectionViewType == null) return null;
 
             // Create the section view
-            ViewSection crossSectionView = ViewSection.CreateSection(_doc, sectionViewType.Id, sectionBox, transform);
+            ViewSection crossSectionView = ViewSection.CreateSection(_doc, sectionViewType.Id, sectionBox);
 
             // Set view name
             try

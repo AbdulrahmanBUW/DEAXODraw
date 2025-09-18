@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>DEAXO Draw</Name>
+		<Assembly>DEAXODraw.dll</Assembly>
+		<FullClassName>DEAXODraw.Application</FullClassName>
+		<ClientId>A7C4F717-7A9B-4C5E-8F2D-1E3A4B5C6D7E</ClientId>
+		<VendorId>DEAXO</VendorId>
+		<VendorDescription>DEAXO GmbH</VendorDescription>
+	</AddIn>
+</RevitAddIns>

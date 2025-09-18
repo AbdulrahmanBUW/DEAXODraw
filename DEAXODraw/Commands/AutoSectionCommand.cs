@@ -57,7 +57,7 @@ namespace DEAXODraw.Commands
 
                 // Step 3: View Template Selection
                 var templateForm = new ViewTemplateSelectionForm(doc);
-                View selectedViewTemplate = null;
+                Autodesk.Revit.DB.View selectedViewTemplate = null;
 
                 if (templateForm.ShowDialog() == DialogResult.OK)
                 {
@@ -293,3 +293,4 @@ namespace DEAXODraw.Commands
             public ViewSection SectionView { get; set; }
         }
     }
+}

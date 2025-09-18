@@ -8,7 +8,7 @@ namespace DEAXODraw.Forms
 {
     public partial class ViewTemplateSelectionForm : Form
     {
-        public View SelectedViewTemplate { get; private set; }
+        public Autodesk.Revit.DB.View SelectedViewTemplate { get; private set; }
 
         public ViewTemplateSelectionForm(Document doc)
         {
@@ -22,8 +22,8 @@ namespace DEAXODraw.Forms
             try
             {
                 var views = new FilteredElementCollector(doc)
-                    .OfClass(typeof(View))
-                    .Cast<View>()
+                    .OfClass(typeof(Autodesk.Revit.DB.View))
+                    .Cast<Autodesk.Revit.DB.View>()
                     .Where(v => v.IsTemplate)
                     .OrderBy(v => v.Name)
                     .ToList();
@@ -70,4 +70,61 @@ namespace DEAXODraw.Forms
 
                 btn.MouseEnter += (s, e) =>
                 {
-                btn.Back
+                    btn.BackColor = ControlPaint.Light(originalColor, 0.1f);
+                };
+
+                btn.MouseLeave += (s, e) =>
+                {
+                    btn.BackColor = originalColor;
+                };
+            }
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (comboBoxTemplates.SelectedItem is ViewTemplateItem selectedItem)
+            {
+                SelectedViewTemplate = selectedItem.View;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a view template.", "Selection Required",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        // Keyboard shortcuts
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    btnOK_Click(this, EventArgs.Empty);
+                    return true;
+                case Keys.Escape:
+                    btnCancel_Click(this, EventArgs.Empty);
+                    return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private class ViewTemplateItem
+        {
+            public string Name { get; set; }
+            public Autodesk.Revit.DB.View View { get; set; }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+    }
+}
