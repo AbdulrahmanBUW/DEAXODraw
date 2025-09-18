@@ -82,6 +82,11 @@
     <Compile Include="Utilities\SectionGenerator.cs" />
     <Compile Include="Utilities\VectorUtils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\AutoElevation_32.png" />
+    <Content Include="Resources\AutoSection_32.png" />
+    <Content Include="Resources\DEAXO_Logo.png" />
+    <Content Include="Resources\MakeParallel_32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
