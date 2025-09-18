@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+using WinForms = System.Windows.Forms;
+using Drawing = System.Drawing;
 
 namespace DEAXODraw.Forms
 {
-    public partial class ProgressForm : Form
+    public partial class ProgressForm : WinForms.Form
     {
         private BackgroundWorker backgroundWorker;
         private Action<BackgroundWorker> workAction;
@@ -76,12 +74,12 @@ namespace DEAXODraw.Forms
         {
             if (e.Error != null)
             {
-                MessageBox.Show($"An error occurred: {e.Error.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                WinForms.MessageBox.Show($"An error occurred: {e.Error.Message}", "Error",
+                    WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Error);
             }
 
             Result = e.Result;
-            DialogResult = isCancelled ? DialogResult.Cancel : DialogResult.OK;
+            DialogResult = isCancelled ? WinForms.DialogResult.Cancel : WinForms.DialogResult.OK;
             Close();
         }
 
@@ -96,7 +94,7 @@ namespace DEAXODraw.Forms
             }
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        protected override void OnFormClosing(WinForms.FormClosingEventArgs e)
         {
             if (backgroundWorker.IsBusy && !isCancelled)
             {
@@ -108,13 +106,13 @@ namespace DEAXODraw.Forms
 
         #region Designer Code
         private System.ComponentModel.IContainer components = null;
-        private ProgressBar progressBar;
-        private Label lblDescription;
-        private Label lblProgress;
-        private Label lblCurrentItem;
-        private Button btnCancel;
-        private Panel panel1;
-        private PictureBox pictureBox1;
+        private WinForms.ProgressBar progressBar;
+        private WinForms.Label lblDescription;
+        private WinForms.Label lblProgress;
+        private WinForms.Label lblCurrentItem;
+        private WinForms.Button btnCancel;
+        private WinForms.Panel panel1;
+        private WinForms.Label lblBrand;
 
         protected override void Dispose(bool disposing)
         {
@@ -128,112 +126,111 @@ namespace DEAXODraw.Forms
 
         private void InitializeComponent()
         {
-            this.progressBar = new ProgressBar();
-            this.lblDescription = new Label();
-            this.lblProgress = new Label();
-            this.lblCurrentItem = new Label();
-            this.btnCancel = new Button();
-            this.panel1 = new Panel();
-            this.pictureBox1 = new PictureBox();
+            this.progressBar = new WinForms.ProgressBar();
+            this.lblDescription = new WinForms.Label();
+            this.lblProgress = new WinForms.Label();
+            this.lblCurrentItem = new WinForms.Label();
+            this.btnCancel = new WinForms.Button();
+            this.panel1 = new WinForms.Panel();
+            this.lblBrand = new WinForms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
 
             // panel1
-            this.panel1.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
-            this.panel1.BackColor = Color.FromArgb(248, 249, 250);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Anchor = ((WinForms.AnchorStyles)(((WinForms.AnchorStyles.Top | WinForms.AnchorStyles.Left) | WinForms.AnchorStyles.Right)));
+            this.panel1.BackColor = Drawing.Color.FromArgb(248, 249, 250);
+            this.panel1.Controls.Add(this.lblBrand);
             this.panel1.Controls.Add(this.lblDescription);
-            this.panel1.Location = new Point(0, 0);
+            this.panel1.Location = new Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(450, 60);
+            this.panel1.Size = new Drawing.Size(450, 60);
             this.panel1.TabIndex = 0;
 
-            // pictureBox1
-            this.pictureBox1.BackgroundImage = global::DEAXODraw.Properties.Resources.DEAXO_Logo;
-            this.pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            this.pictureBox1.Location = new Point(15, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new Size(40, 30);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            // lblBrand
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Font = new Drawing.Font("Segoe UI", 10F, Drawing.FontStyle.Bold);
+            this.lblBrand.ForeColor = Drawing.Color.FromArgb(220, 53, 69);
+            this.lblBrand.Location = new Drawing.Point(15, 10);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new Drawing.Size(56, 19);
+            this.lblBrand.TabIndex = 0;
+            this.lblBrand.Text = "DEAXO";
 
             // lblDescription
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            this.lblDescription.ForeColor = Color.FromArgb(0, 122, 204);
-            this.lblDescription.Location = new Point(65, 20);
+            this.lblDescription.Font = new Drawing.Font("Segoe UI", 10F, Drawing.FontStyle.Bold);
+            this.lblDescription.ForeColor = Drawing.Color.FromArgb(0, 122, 204);
+            this.lblDescription.Location = new Drawing.Point(15, 30);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new Size(89, 19);
+            this.lblDescription.Size = new Drawing.Size(89, 19);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.Text = "Processing...";
 
             // progressBar
-            this.progressBar.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
-            this.progressBar.Location = new Point(30, 80);
+            this.progressBar.Anchor = ((WinForms.AnchorStyles)(((WinForms.AnchorStyles.Top | WinForms.AnchorStyles.Left) | WinForms.AnchorStyles.Right)));
+            this.progressBar.Location = new Drawing.Point(30, 80);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new Size(390, 23);
-            this.progressBar.Style = ProgressBarStyle.Continuous;
+            this.progressBar.Size = new Drawing.Size(390, 23);
+            this.progressBar.Style = WinForms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 1;
 
             // lblProgress
-            this.lblProgress.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
-            this.lblProgress.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            this.lblProgress.ForeColor = Color.FromArgb(0, 122, 204);
-            this.lblProgress.Location = new Point(350, 110);
+            this.lblProgress.Anchor = ((WinForms.AnchorStyles)((WinForms.AnchorStyles.Top | WinForms.AnchorStyles.Right)));
+            this.lblProgress.Font = new Drawing.Font("Segoe UI", 9F, Drawing.FontStyle.Bold);
+            this.lblProgress.ForeColor = Drawing.Color.FromArgb(0, 122, 204);
+            this.lblProgress.Location = new Drawing.Point(350, 110);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new Size(70, 15);
+            this.lblProgress.Size = new Drawing.Size(70, 15);
             this.lblProgress.TabIndex = 2;
             this.lblProgress.Text = "0%";
-            this.lblProgress.TextAlign = ContentAlignment.TopRight;
+            this.lblProgress.TextAlign = Drawing.ContentAlignment.TopRight;
 
             // lblCurrentItem
-            this.lblCurrentItem.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
-            this.lblCurrentItem.Font = new Font("Segoe UI", 9F);
-            this.lblCurrentItem.ForeColor = Color.FromArgb(108, 117, 125);
-            this.lblCurrentItem.Location = new Point(30, 110);
+            this.lblCurrentItem.Anchor = ((WinForms.AnchorStyles)(((WinForms.AnchorStyles.Top | WinForms.AnchorStyles.Left) | WinForms.AnchorStyles.Right)));
+            this.lblCurrentItem.Font = new Drawing.Font("Segoe UI", 9F);
+            this.lblCurrentItem.ForeColor = Drawing.Color.FromArgb(108, 117, 125);
+            this.lblCurrentItem.Location = new Drawing.Point(30, 110);
             this.lblCurrentItem.Name = "lblCurrentItem";
-            this.lblCurrentItem.Size = new Size(314, 15);
+            this.lblCurrentItem.Size = new Drawing.Size(314, 15);
             this.lblCurrentItem.TabIndex = 3;
             this.lblCurrentItem.Text = "Initializing...";
 
             // btnCancel
-            this.btnCancel.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
-            this.btnCancel.BackColor = Color.FromArgb(220, 53, 69);
+            this.btnCancel.Anchor = ((WinForms.AnchorStyles)((WinForms.AnchorStyles.Bottom | WinForms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = Drawing.Color.FromArgb(220, 53, 69);
             this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = FlatStyle.Flat;
-            this.btnCancel.Font = new Font("Segoe UI", 9F);
-            this.btnCancel.ForeColor = Color.White;
-            this.btnCancel.Location = new Point(345, 140);
+            this.btnCancel.FlatStyle = WinForms.FlatStyle.Flat;
+            this.btnCancel.Font = new Drawing.Font("Segoe UI", 9F);
+            this.btnCancel.ForeColor = Drawing.Color.White;
+            this.btnCancel.Location = new Drawing.Point(345, 140);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(75, 30);
+            this.btnCancel.Size = new Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
 
             // ProgressForm
-            this.AutoScaleDimensions = new SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = Color.White;
-            this.ClientSize = new Size(450, 180);
+            this.AutoScaleDimensions = new Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = WinForms.AutoScaleMode.Font;
+            this.BackColor = Drawing.Color.White;
+            this.ClientSize = new Drawing.Size(450, 180);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblCurrentItem);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.panel1);
-            this.Font = new Font("Segoe UI", 9F);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.Font = new Drawing.Font("Segoe UI", 9F);
+            this.FormBorderStyle = WinForms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = WinForms.FormStartPosition.CenterParent;
             this.Text = "DEAXO - Processing";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
         #endregion

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
+using WinForms = System.Windows.Forms;
 using Autodesk.Revit.DB;
 
 namespace DEAXODraw.Forms
 {
-    public partial class ViewTemplateSelectionForm : Form
+    public partial class ViewTemplateSelectionForm : WinForms.Form
     {
         public Autodesk.Revit.DB.View SelectedViewTemplate { get; private set; }
 
@@ -44,8 +44,8 @@ namespace DEAXODraw.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading view templates: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                WinForms.MessageBox.Show($"Error loading view templates: {ex.Message}", "Error",
+                    WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Warning);
             }
         }
 
@@ -55,7 +55,7 @@ namespace DEAXODraw.Forms
             this.BackColor = System.Drawing.Color.White;
 
             // Style the combo box
-            comboBoxTemplates.FlatStyle = FlatStyle.Flat;
+            comboBoxTemplates.FlatStyle = WinForms.FlatStyle.Flat;
 
             // Add hover effects to buttons
             AddButtonHoverEffects();
@@ -64,13 +64,13 @@ namespace DEAXODraw.Forms
         private void AddButtonHoverEffects()
         {
             // Add hover effects for modern look
-            foreach (Button btn in new[] { btnOK, btnCancel })
+            foreach (WinForms.Button btn in new[] { btnOK, btnCancel })
             {
                 var originalColor = btn.BackColor;
 
                 btn.MouseEnter += (s, e) =>
                 {
-                    btn.BackColor = ControlPaint.Light(originalColor, 0.1f);
+                    btn.BackColor = WinForms.ControlPaint.Light(originalColor, 0.1f);
                 };
 
                 btn.MouseLeave += (s, e) =>
@@ -85,31 +85,31 @@ namespace DEAXODraw.Forms
             if (comboBoxTemplates.SelectedItem is ViewTemplateItem selectedItem)
             {
                 SelectedViewTemplate = selectedItem.View;
-                DialogResult = DialogResult.OK;
+                DialogResult = WinForms.DialogResult.OK;
                 Close();
             }
             else
             {
-                MessageBox.Show("Please select a view template.", "Selection Required",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                WinForms.MessageBox.Show("Please select a view template.", "Selection Required",
+                    WinForms.MessageBoxButtons.OK, WinForms.MessageBoxIcon.Information);
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DialogResult = WinForms.DialogResult.Cancel;
             Close();
         }
 
         // Keyboard shortcuts
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        protected override bool ProcessCmdKey(ref WinForms.Message msg, WinForms.Keys keyData)
         {
             switch (keyData)
             {
-                case Keys.Enter:
+                case WinForms.Keys.Enter:
                     btnOK_Click(this, EventArgs.Empty);
                     return true;
-                case Keys.Escape:
+                case WinForms.Keys.Escape:
                     btnCancel_Click(this, EventArgs.Empty);
                     return true;
             }

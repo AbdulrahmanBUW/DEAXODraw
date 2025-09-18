@@ -64,9 +64,10 @@ namespace DEAXODraw
             PushButton button = panel.AddItem(buttonData) as PushButton;
             button.ToolTip = tooltip;
 
-            // Set icons
+            // Set icons - only use 32px since you mentioned you only have 32px icons
             button.LargeImage = GetEmbeddedImage($"{iconName}_32.png");
-            button.Image = GetEmbeddedImage($"{iconName}_16.png");
+            // For small icon, use the same 32px image - Revit will scale it down
+            button.Image = GetEmbeddedImage($"{iconName}_32.png");
         }
 
         private BitmapImage GetEmbeddedImage(string imageName)

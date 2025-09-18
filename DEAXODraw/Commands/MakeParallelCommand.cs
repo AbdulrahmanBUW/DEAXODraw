@@ -165,7 +165,7 @@ namespace DEAXODraw.Commands
                 // 1. Grid direction
                 if (element is Grid grid)
                 {
-                    return grid.Curve.Direction;
+                    return grid.Curve.ComputeDerivatives(0.5, true).BasisX.Normalize();
                 }
 
                 // 2. Reference plane direction
@@ -183,7 +183,7 @@ namespace DEAXODraw.Commands
                 // 4. Line-based elements (walls, etc.)
                 if (element.Location is LocationCurve locationCurve)
                 {
-                    return locationCurve.Curve.Direction;
+                    return locationCurve.Curve.ComputeDerivatives(0.5, true).BasisX.Normalize();
                 }
 
                 // 5. Section view direction
@@ -210,7 +210,7 @@ namespace DEAXODraw.Commands
                 // 1. Grid origin
                 if (element is Grid grid)
                 {
-                    return grid.Curve.Origin;
+                    return grid.Curve.Evaluate(0.5, true);
                 }
 
                 // 2. Reference plane origin
@@ -228,7 +228,7 @@ namespace DEAXODraw.Commands
                 // 4. Line-based elements
                 if (element.Location is LocationCurve locationCurve)
                 {
-                    return locationCurve.Curve.Origin;
+                    return locationCurve.Curve.Evaluate(0.5, true);
                 }
 
                 // 5. Point-based elements

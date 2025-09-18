@@ -37,10 +37,9 @@ namespace DEAXODraw.Forms
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblBrand = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
 
             // 
@@ -49,7 +48,7 @@ namespace DEAXODraw.Forms
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblTitle.Location = new System.Drawing.Point(60, 8);
+            this.lblTitle.Location = new System.Drawing.Point(75, 8);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(229, 21);
             this.lblTitle.TabIndex = 0;
@@ -108,7 +107,7 @@ namespace DEAXODraw.Forms
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.lblBrand);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.lblDescription);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -117,15 +116,16 @@ namespace DEAXODraw.Forms
             this.panel1.TabIndex = 4;
 
             // 
-            // pictureBox1
+            // lblBrand
             // 
-            this.pictureBox1.BackgroundImage = global::DEAXODraw.Properties.Resources.DEAXO_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 30);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.lblBrand.Location = new System.Drawing.Point(15, 10);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(56, 19);
+            this.lblBrand.TabIndex = 1;
+            this.lblBrand.Text = "DEAXO";
 
             // 
             // lblDescription
@@ -133,7 +133,7 @@ namespace DEAXODraw.Forms
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.lblDescription.Location = new System.Drawing.Point(60, 32);
+            this.lblDescription.Location = new System.Drawing.Point(75, 32);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(356, 30);
             this.lblDescription.TabIndex = 2;
@@ -163,7 +163,6 @@ namespace DEAXODraw.Forms
             this.Text = "DEAXO - Select View Template";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,7 +174,7 @@ namespace DEAXODraw.Forms
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.Label lblDescription;
     }
 }

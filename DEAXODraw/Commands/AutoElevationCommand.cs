@@ -74,7 +74,7 @@ namespace DEAXODraw.Commands
             }
         }
 
-        private Result ProcessElements(Document doc, List<Element> elements, View viewTemplate)
+        private Result ProcessElements(Document doc, List<Element> elements, Autodesk.Revit.DB.View viewTemplate)
         {
             try
             {
