@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using Autodesk.Revit.DB;
+
+namespace DEAXODraw.Forms
+{
+    public partial class ViewTemplateSelectionForm : Form
+    {
+        public View SelectedViewTemplate { get; private set; }
+
+        public ViewTemplateSelectionForm(Document doc)
+        {
+            InitializeComponent();
+            LoadViewTemplates(doc);
+            CustomizeAppearance();
+        }
+
+        private void LoadViewTemplates(Document doc)
+        {
+            try
+            {
+                var views = new FilteredElementCollector(doc)
+                    .OfClass(typeof(View))
+                    .Cast<View>()
+                    .Where(v => v.IsTemplate)
+                    .OrderBy(v => v.Name)
+                    .ToList();
+
+                // Add "None" option
+                comboBoxTemplates.Items.Add(new ViewTemplateItem { Name = "None", View = null });
+
+                // Add view templates
+                foreach (var view in views)
+                {
+                    comboBoxTemplates.Items.Add(new ViewTemplateItem { Name = view.Name, View = view });
+                }
+
+                if (comboBoxTemplates.Items.Count > 0)
+                {
+                    comboBoxTemplates.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading view templates: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CustomizeAppearance()
+        {
+            // Set modern styling
+            this.BackColor = System.Drawing.Color.White;
+
+            // Style the combo box
+            comboBoxTemplates.FlatStyle = FlatStyle.Flat;
+
+            // Add hover effects to buttons
+            AddButtonHoverEffects();
+        }
+
+        private void AddButtonHoverEffects()
+        {
+            // Add hover effects for modern look
+            foreach (Button btn in new[] { btnOK, btnCancel })
+            {
+                var originalColor = btn.BackColor;
+
+                btn.MouseEnter += (s, e) =>
+                {
+                btn.Back
